@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import useFetch from './use-Fetch'
+
+const dummy_data = [
+  { name: 'suresh', dist: 'sirohi' },
+  { name: 'ketrina', dist: 'delhi' },
+]
+
+localStorage.setItem('dataObj', JSON.stringify(dummy_data))
 
 function App() {
+  const data = useFetch()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Data from localStorage</h1>
+      {data.map((d) => (
+        <h3 className='center'>{`Name is ${d.name} and city is ${d.dist}`}</h3>
+      ))}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
